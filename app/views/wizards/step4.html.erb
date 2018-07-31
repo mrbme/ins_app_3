@@ -2,106 +2,81 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.0/css/bootstrap-slider.css">
 <!-- end sliderstyles -->
 <div class="container">
-	<div class="d-flex justify-content-between">
-		<h4>Location</h4>
-		<h4>Basic</h4>
-		<h4>Health</h4>
-		<h4>Coverage</h4>
-		<h4>Quotes</h4>
-	</div>
-	<div class="progress">
-		<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-	</div>
-	<!-- end progress -->
-	<div class="row pt-5">
-		<div class="col-md-6 pb-3">
-			<div class="p-2 white">
-				<h3>Coverage Amounts</h3>
-				<div class="d-flex flex-row">
-					<div><h1 id="ex6CurrentSliderValLabel">$</h1></div>
-					<div><h1 id="ex6SliderVal">5000</h1></div>
-				</div>
-				<input id="ex6" type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="1000" data-slider-value="5000"/>
-			</div>
-		</div>
-			<div class="col-md-6 pb-3">
-				<div class="p-2 white">
-					<h3>Policy Length</h3>
-							<div class="row">
-				<div class="col">
-					<div class="form-check">
-						<input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-					</div>
-					<p>
-						Protection for
-					</p>
-					<h2>
-						15 Years
-					</h2>
-										<p>
-						policies starting at
-					</p>
-					<h2>
-						$19/mo
-					</h2>
-				</div>
-				<div class="col">
-					<div class="form-check">
-						<input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-					</div>
-					<p>
-						Protection for
-					</p>
-					<h2>
-						15 Years
-					</h2>
-										<p>
-						policies starting at
-					</p>
-					<h2>
-						$19/mo
-					</h2>
-				</div>
-				<div class="col">
-					<div class="form-check">
-						<input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
-					</div>
-					<p>
-						Protection for
-					</p>
-					<h2>
-						15 Years
-					</h2>
-					<p>
-						policies starting at
-					</p>
-					<h2>
-						$19/mo
-					</h2>
-				</div>
-			</div>
-					
-					<!-- 	end of form	 -->
-				</div>
-			</div>
-	</div>
-	
-	<p>
-		<span>Your policy would protect your loved ones with a tax free, lump sum of</span>
-		<span id="policy_data"></span>
-	</p>
-	
-		</div>
-		<script type="text/javascript">		
-		// With JQuery
-		$("#ex6").slider();
-		$("#ex6").on("slide", function(slideEvt) {
-			var x = $("#ex6SliderVal").text(slideEvt.value);
-			var val = x["0"].innerHTML;
-			// console.log(y);
-			var y = document.getElementById('policy_data');
-			y.innerHTML += val;
-		});
-		
-			
-		</script>
+    <div class="d-flex justify-content-between">
+        <h4>Location</h4>
+        <h4>Basic</h4>
+        <h4>Health</h4>
+        <h4>Coverage</h4>
+        <h4>Quotes</h4>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <!-- end progress -->
+    <div class="row pt-5">
+        <div class="col-md-6 pb-3">
+            <div class="d-flex flex-column h-100 align-items-stretch p-2 white">
+                <h3>Coverage Amounts</h3>
+                <div class="d-flex flex-row">
+                    <div>
+                        <h1 id="ex6CurrentSliderValLabel">$</h1></div>
+                    <div>
+                        <h1 id="ex6SliderVal">5000</h1></div>
+                </div>
+                <input id="ex6" type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="1000" data-slider-value="5000" />
+            </div>
+        </div>
+        <div class="col-md-6 pb-3">
+            <div class="d-flex flex-column h-100 align-items-stretch p-2 white">
+                <h3>Policy Length</h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                </div>
+                <!-- 	end of form	 -->
+            </div>
+        </div>
+    </div>
+    <p>
+        <span>Your policy would protect your loved ones with a tax free, lump sum of</span>
+        <span id="policy_data"></span>
+    </p>
+</div>
+<script type="text/javascript">
+// With JQuery
+$("#ex6").slider();
+$("#ex6").on("slide", function(slideEvt) {
+    $("#ex6SliderVal").text(slideEvt.value);
+    //var val = x["0"].innerHTML;
+    $("#policy_data").text(slideEvt.value);
+   // var val = x["0"].innerHTML;
+    // console.log(y);
+    // var y = document.getElementById('policy_data');
+    // y.innerHTML += val;
+});
+</script>
