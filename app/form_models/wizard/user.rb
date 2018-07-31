@@ -14,12 +14,12 @@ module Wizard
     end
 
     class Step1 < Base
-      validates :zip_code, presence: true
+      validates :zip_code, zipcode: { country_code: :us }
     end
 
     class Step2 < Step1
       validates :gender, presence: true
-      validates :age, presence: true
+      validates :birthday, presence: true
     end
 
     class Step3 < Step2

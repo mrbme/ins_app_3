@@ -13,13 +13,13 @@
 <div id="zipcode" class="invisible"><%= @user_wizard.zip_code %></div>
 <div style="font-size:3em; width: 60%;" id="empty_zip" class="text-center m-auto"></div>
 
-<div stlye="width: 60%" class="m-auto">
+        <div class="m-auto w-50">
 <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
 <%= f.error_notification %>
    <%= hidden_field_tag :current_step, 'step2' %>
   <div class="form-group">
     <label for="formGroupExampleInput">Birth Date</label>
-    <%= f.date_field :age, class: "form-control" %>
+    <%= f.date_field :birthday, class: "form-control" %>
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Gender</label>
