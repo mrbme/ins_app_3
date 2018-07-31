@@ -63,8 +63,8 @@
         </div>
     </div>
         <div class="text-center pt-3">
-        <span>Your policy would protect your loved ones with a tax free, lump sum of $</span>
-        <span id="policy_data" class="bold"></span>
+        <span class="font-weight-bold">Your policy would protect your loved ones with a tax free, lump sum of $</span>
+        <span id="policy_data" class="font-weight-bold"></span>
     </div>
 </div>
 <script type="text/javascript">
@@ -72,11 +72,6 @@
 $("#ex6").slider();
 $("#ex6").on("slide", function(slideEvt) {
     $("#ex6SliderVal").text(slideEvt.value);
-    //var val = x["0"].innerHTML;
     $("#policy_data").text(slideEvt.value);
-   // var val = x["0"].innerHTML;
-    // console.log(y);
-    // var y = document.getElementById('policy_data');
-    // y.innerHTML += val;
 });
 </script>
