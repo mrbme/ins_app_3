@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <h4>Location</h4>
+    <h4>Basic</h4>
+    <h4>Health</h4>
+    <h4>Coverage</h4>
+    <h4>Quotes</h4>
+  </div>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  <!-- end progress -->
+
+<div stlye="width: 60%" class="m-auto">
+<%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
+  <%= f.error_notification %>
+
+  <%= hidden_field_tag :current_step, 'step3' %>
+  <%= f.input :height %>
+  <%= f.input :weight %>
+  <%= f.input :tobacco %>
+  <%= f.input :medical %>
+  <%= f.input :family_illness %>
+  <%= f.input :license %>
+  <%= f.submit 'Get My Free Quotes', class: "btn btn-primary" %>
+<% end %>
+</div>
