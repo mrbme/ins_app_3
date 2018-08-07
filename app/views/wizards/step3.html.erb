@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="d-flex justify-content-between">
     <h4>Location</h4>
     <h4>Basic</h4>
@@ -8,9 +8,9 @@
   </div>
   <div class="progress">
     <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-  </div>
+  </div> -->
   <!-- end progress -->
-
+<!-- 
 <div stlye="width: 60%" class="m-auto">
 <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
   <%= f.error_notification %>
@@ -24,4 +24,88 @@
   <%= f.input :license %>
   <%= f.submit 'Get My Free Quotes', class: "btn btn-primary" %>
 <% end %>
+</div> -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.0/bootstrap-slider.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.0/css/bootstrap-slider.css">
+<!-- end sliderstyles -->
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <h4>Location</h4>
+        <h4>Basic</h4>
+        <h4>Health</h4>
+        <h4>Coverage</h4>
+        <h4>Quotes</h4>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <!-- end progress -->
+    <div class="row pt-5">
+        <div class="col-md-6 pb-3">
+            <div class="d-flex flex-column h-100 align-items-stretch p-2 white">
+                <h3>Coverage Amounts</h3>
+                <div class="d-flex flex-row">
+                    <div>
+                    <h1 id="ex6CurrentSliderValLabel">$</h1></div>
+                    <div>
+                    <h1 id="ex6SliderVal">5000</h1></div>
+                </div>
+                <input id="ex6" type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="1000" data-slider-value="5000" />
+            </div>
+        </div>
+        <div class="col-md-6 pb-3">
+            <div class="d-flex flex-column h-100 align-items-stretch p-2 white">
+                <h3>Policy Length</h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+                        </div>
+                        <p>Protection for </p>
+                        <h2>15 Years</h2>
+                        <p>policies starting at</p>
+                        <h2>$19/mo</h2>
+                    </div>
+                </div>
+                <!--    end of form  -->
+            </div>
+        </div>
+    </div>
+    <div class="text-center pt-3">
+        <span class="font-weight-bold">Your policy would protect your loved ones with a tax free, lump sum of $</span>
+        <span id="policy_data" class="font-weight-bold"></span>
+    </div>
+    <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
+    <%= f.error_notification %>
+    <%= hidden_field_tag :current_step, 'step4' %>
+    <%= f.submit 'Finish', class: "btn btn-primary" %>
+    <% end %>
 </div>
+<script type="text/javascript">
+// With JQuery
+$("#ex6").slider();
+$("#ex6").on("slide", function(slideEvt) {
+$("#ex6SliderVal").text(slideEvt.value);
+$("#policy_data").text(slideEvt.value);
+});
+</script>

@@ -19,9 +19,9 @@
                 <h3>Coverage Amounts</h3>
                 <div class="d-flex flex-row">
                     <div>
-                        <h1 id="ex6CurrentSliderValLabel">$</h1></div>
+                    <h1 id="ex6CurrentSliderValLabel">$</h1></div>
                     <div>
-                        <h1 id="ex6SliderVal">5000</h1></div>
+                    <h1 id="ex6SliderVal">5000</h1></div>
                 </div>
                 <input id="ex6" type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="1000" data-slider-value="5000" />
             </div>
@@ -58,20 +58,25 @@
                         <h2>$19/mo</h2>
                     </div>
                 </div>
-                <!-- 	end of form	 -->
+                <!--    end of form  -->
             </div>
         </div>
     </div>
-        <div class="text-center pt-3">
+    <div class="text-center pt-3">
         <span class="font-weight-bold">Your policy would protect your loved ones with a tax free, lump sum of $</span>
         <span id="policy_data" class="font-weight-bold"></span>
     </div>
+    <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
+    <%= f.error_notification %>
+    <%= hidden_field_tag :current_step, 'step4' %>
+    <%= f.submit 'Finish', class: "btn btn-primary" %>
+    <% end %>
 </div>
 <script type="text/javascript">
 // With JQuery
 $("#ex6").slider();
 $("#ex6").on("slide", function(slideEvt) {
-    $("#ex6SliderVal").text(slideEvt.value);
-    $("#policy_data").text(slideEvt.value);
+$("#ex6SliderVal").text(slideEvt.value);
+$("#policy_data").text(slideEvt.value);
 });
 </script>

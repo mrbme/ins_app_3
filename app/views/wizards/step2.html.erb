@@ -25,6 +25,10 @@
     <label for="formGroupExampleInput2">Gender</label>
      <%= f.select :gender, ['male', 'female'], class: "form-control" %>
   </div>
+    <div class="form-group">
+    <label for="formGroupExampleInput2">Are you a smoker?</label>
+     <%= f.select :gender, ['yes', 'rarely', 'no'], class: "form-control" %>
+  </div>
   <%= f.submit 'Next', class: "btn btn-primary" %>
 <% end %>
 </div>

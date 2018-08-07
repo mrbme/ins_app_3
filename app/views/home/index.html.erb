@@ -1,11 +1,36 @@
-<div class="container pt-5">
-	<div class="row">
-		<div class="col-md-6 white pt-5">
-			<h1 class="pt-5">The easy way to compare and buy life insurance</h1>
-			<%= link_to "Get Started", step1_wizard_path, class: 'btn btn-primary' %>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+	<header class="masthead mb-auto">
+		<div class="inner">
+			<h3 class="masthead-brand">FASTRATE</h3>
+			<nav class="nav nav-masthead justify-content-center">
+				<a class="nav-link active" href="#">Home</a>
+				<a class="nav-link" href="#">Features</a>
+				<a class="nav-link" href="#">Contact</a>
+			</nav>
 		</div>
-		<div class="col-md-6">
-			<img class="img-fluid" src="https://policygenius-images.imgix.net/photos/home/mother-holding-yawning-baby.jpg?fit=max&auto=format&ch=Width,DPR&w=720">
+	</header>
+	<main role="main" class="inner cover">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="cover-heading">Fast Rate Insurance</h1>
+				<p class="lead">The easy way to compare and buy life insurance</p>
+				<p class="lead">
+					<%= link_to "Get Started", step1_wizard_path, class: 'btn btn-lg btn-primary' %>
+				</p>
+			</div>
+			<div class="col-md-6 d-none d-md-block d-lg-block d-xl-block">
+				<img class="img-fluid" src="https://i.imgur.com/HGGiKNQ.png">
+			</div>
 		</div>
-	</div>
+	</main>
+	<footer class="mastfoot mt-auto">
+		<div class="inner text-center">
+			        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+		</div>
+	</footer>
+</div>
 </div>
