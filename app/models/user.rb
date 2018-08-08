@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :tobacco, presence: true
   validates :birthday, presence: true
+  
 end
