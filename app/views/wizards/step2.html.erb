@@ -17,18 +17,9 @@
 <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
 <%= f.error_notification %>
    <%= hidden_field_tag :current_step, 'step2' %>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Birth Date</label>
     <%= f.date_field :birthday, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Gender</label>
      <%= f.select :gender, ['male', 'female'], class: "form-control" %>
-  </div>
-    <div class="form-group">
-    <label for="formGroupExampleInput2">Are you a smoker?</label>
-     <%= f.select :gender, ['yes', 'rarely', 'no'], class: "form-control" %>
-  </div>
+     <%= f.select :tobacco, ['yes', 'rarely', 'no'], class: "form-control" %>
   <%= f.submit 'Next', class: "btn btn-primary" %>
 <% end %>
 </div>
