@@ -69,8 +69,8 @@
     <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
     <%= f.error_notification %>
     <%= hidden_field_tag :current_step, 'step3' %>
-    <%= f.input :coverage,  class: "d-none" %>
-    <%= f.input :term %>
+    <%= f.hidden_field :coverage,  class: "d-none" %>
+    <%= f.hidden_field :term %>
     <%= f.submit 'Finish', class: "btn btn-primary" %>
     <% end %>
 </div>

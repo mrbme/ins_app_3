@@ -21,7 +21,8 @@ class WizardsController < ApplicationController
   def create
     if @user_wizard.user.save
       session[:user_attributes] = nil
-      redirect_to root_path, notice: 'User succesfully created!'
+      #redirect_to root_path, notice: 'User succesfully created!'
+      redirect_to thankyou_path, notice: 'THANK YOU FOR SUBMITTING'
     else
       redirect_to({ action: Wizard::User::STEPS.first }, alert: 'There were a problem when creating the user.')
     end
