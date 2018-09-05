@@ -20,11 +20,26 @@ class WizardsController < ApplicationController
 
   def create
     if @user_wizard.user.save
-      session[:user_attributes] = nil
+      #session[:user_attributes] = nil
       #redirect_to root_path, notice: 'User succesfully created!'
-      redirect_to thankyou_path, notice: 'THANK YOU FOR SUBMITTING'
+      #redirect_to thankyou_path, notice: 'THANK YOU FOR SUBMITTING'
+      redirect_to coverage_redirect
     else
       redirect_to({ action: Wizard::User::STEPS.first }, alert: 'There were a problem when creating the user.')
+    end
+  end
+
+  def coverage_redirect
+    coverage = @user_wizard.user.coverage.to_i
+    case coverage
+    when 0...500000
+      thankyou_path
+    when 500000...750000
+      thankyou2_path
+    when 750000...1000000
+      thankyou2_path
+    else
+      thankyou2_path
     end
   end
 

@@ -27,21 +27,15 @@ gem 'jbuilder', '~> 2.5'
 gem 'httparty', '~> 0.16.2'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-
 gem 'validates_zipcode', '~> 0.1.0'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
 group :production do
   gem 'pg'
 end
-
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

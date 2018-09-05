@@ -5,17 +5,17 @@
     <div class="d-flex justify-content-between">
         <h4>Location</h4>
         <h4>Basic</h4>
-        <h4>Health</h4>
         <h4>Coverage</h4>
         <h4>Quotes</h4>
     </div>
     <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-    <div class="container pt">
-        <%= @zip_code %>
+        <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     <!-- end progress -->
+    <div class="container py-3">
+        <%= render 'layouts/errors', object: @user_wizard %>
+    </div>
+    <!-- end errors -->
     <div class="row pt-5">
         <div class="col-md-6 pb-3">
             <div class="d-flex flex-column h-100 align-items-stretch p-2 white">
@@ -26,7 +26,7 @@
                     <div>
                     <h1 id="ex6SliderVal">250000</h1></div>
                 </div>
-                <input id="ex6" type="text" data-slider-min="250000" data-slider-max="1000000" data-slider-step="100000" data-slider-value="250000" />
+                <input id="ex6" type="text" data-slider-min="250000" data-slider-max="1000000" data-slider-step="50000" data-slider-value="200000" />
             </div>
         </div>
         <div class="col-md-6 pb-3">
@@ -35,30 +35,19 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input position-static" type="radio" name="term" id="blankRadio1" value="15" aria-label="test1">
+                            <input class="form-check-input position-static" type="radio" name="term" id="blankRadio2" value="20" aria-label="test2">
                         </div>
-                        <p>Protection for </p>
-                        <h2>15 Years</h2>
+                        <h2>20 Years</h2>
                         <p>policies starting at</p>
-                        <h2>$19/mo</h2>
-                    </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input position-static" type="radio" name="term" id="blankRadio2" value="25" aria-label="test2">
-                        </div>
-                        <p>Protection for </p>
-                        <h2>25 Years</h2>
-                        <p>policies starting at</p>
-                        <h2>$55/mo</h2>
+                        <h2 id="rates-20"></h2>
                     </div>
                     <div class="col">
                         <div class="form-check">
                             <input class="form-check-input position-static" type="radio" name="term" id="blankRadio3" value="30" aria-label="test3">
                         </div>
-                        <p>Protection for </p>
                         <h2>30 Years</h2>
                         <p>policies starting at</p>
-                        <h2>$66/mo</h2>
+                        <h2 id="rates-30"></h2>
                     </div>
                 </div>
                 <!--    end of form  -->
@@ -70,37 +59,47 @@
         <span id="policy_data_coverage" class="font-weight-bold"></span><span class="font-weight-bold">&nbsp;for a term of&nbsp;</span><span id="policy_data_term" class="font-weight-bold"></span><span class="font-weight-bold">&nbsp;years.</span>
     </div>
     <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
-    <%= f.error_notification %>
     <%= hidden_field_tag :current_step, 'step3' %>
     <%= f.hidden_field :coverage,  class: "d-none" %>
     <%= f.hidden_field :term %>
     <%= f.submit 'Finish', class: "btn btn-primary" %>
     <% end %>
-    <h1><%= @zip_code %></h1>
 </div>
 <script type="text/javascript">
-$.fn.digits = function(){ 
-    return this.each(function(){ 
-        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
-    })
+$.fn.digits = function() {
+return this.each(function() {
+$(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+})
 }
 // With JQuery
 $("#ex6").slider();
 $("#ex6").on("slide", function(slideEvt) {
-    $("#ex6SliderVal").text(slideEvt.value).digits();
-    $("#policy_data_coverage").text(slideEvt.value).digits();
-    $("#user_wizard_coverage").val(slideEvt.value);
+$("#ex6SliderVal").text(slideEvt.value).digits();
+$("#policy_data_coverage").text(slideEvt.value).digits();
+$("#user_wizard_coverage").val(slideEvt.value);
+if ($("#user_wizard_coverage")[0].value < 500000) {
+document.getElementById("rates-20").innerHTML = "$" + 18;
+document.getElementById("rates-30").innerHTML = "$" + 28;
+} else if ($("#user_wizard_coverage")[0].value < 750000) {
+document.getElementById("rates-20").innerHTML = "$" + 22;
+document.getElementById("rates-30").innerHTML = "$" + 38;
+}
+else if ($("#user_wizard_coverage")[0].value < 1000000) {
+document.getElementById("rates-20").innerHTML = "$" + 30;
+document.getElementById("rates-30").innerHTML = "$" + 54;
+}
+else if ($("#user_wizard_coverage")[0].value >= 1000000) {
+document.getElementById("rates-20").innerHTML = "$" + 36;
+document.getElementById("rates-30").innerHTML = "$" + 68;
+}
 });
-
-
-$(".form-check-input").click(function(){
-    var radioValue = $("input[name='term']:checked").val();
-            if(radioValue){
-                console.log(radioValue);
-                $("#user_wizard_term").val(radioValue);
-                $("#policy_data_term").text(radioValue);
-            }
+$(".form-check-input").click(function() {
+var radioValue = $("input[name='term']:checked").val();
+if (radioValue) {
+console.log(radioValue);
+$("#user_wizard_term").val(radioValue);
+$("#policy_data_term").text(radioValue);
+}
 });
-
+<% console %>
 </script>
-

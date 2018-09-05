@@ -1,21 +1,33 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>" role="alert">
+  <a href="#" data-dismiss="alert" class="close">×</a>
+  <ul>
+    <li>
+      <%= value %>
+    </li>
+  </ul>
+</div>
+<% end %>
 <div class="container">
   <div class="d-flex justify-content-between">
     <h4>Location</h4>
     <h4>Basic</h4>
-    <h4>Health</h4>
     <h4>Coverage</h4>
     <h4>Quotes</h4>
   </div>
   <div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
   </div>
   <!-- end progress -->
+      <div class="container py-3">
+        <%= render 'layouts/errors', object: @user_wizard %>
+    </div>
+    <!-- end errors -->
 <div id="zipcode" class="invisible"><%= @user_wizard.zip_code %></div>
 <div style="font-size:3em; width: 60%;" id="empty_zip" class="text-center m-auto"></div>
 
         <div class="m-auto w-50">
 <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
-<%= f.error_notification %>
    <%= hidden_field_tag :current_step, 'step2' %>
     <%= f.date_field :birthday, class: "form-control" %>
      <%= f.select :gender, ['male', 'female'], class: "form-control" %>
