@@ -21,9 +21,9 @@ class WizardsController < ApplicationController
   def create
     if @user_wizard.user.save
       #session[:user_attributes] = nil
-      #redirect_to root_path, notice: 'User succesfully created!'
-      #redirect_to thankyou_path, notice: 'THANK YOU FOR SUBMITTING'
-      redirect_to coverage_redirect
+      redirect_to coverage_redirect, notice: 'THANK YOU FOR SUBMITTING'
+      # Simple post with full url and setting the body
+      Http.post('https://hooks.zapier.com/hooks/catch/2194585/qiln6o/', body: session[:user_attributes])
     else
       redirect_to({ action: Wizard::User::STEPS.first }, alert: 'There were a problem when creating the user.')
     end
