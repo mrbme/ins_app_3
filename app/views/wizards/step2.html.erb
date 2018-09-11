@@ -55,11 +55,11 @@ $(document).ready(function() {
     console.log(zipcode);
     $.ajax({
         method: 'get',
-        url: 'http://api.zippopotam.us/us/' + zipcode,
+        url: 'https://www.zipcodeapi.com/rest/yF6alvCJHMioEGbRSlS0uRRz8aDBbAuKjw5lC8ol5qV4FkDaUS1sNBeh9CtXKLW3/info.json/' + zipcode + '/degrees',
         dataType: 'json',
         success: function(data, status, jqXHR) {
             console.log(data);
-            var city = data.places[0]['place name'];
+            var city = data.city;
             if (city !== null || city !== '' || typeof city !== 'undefined') {
                 console.log(city);
                 var y = document.getElementById('empty_zip');
