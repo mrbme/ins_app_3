@@ -29,5 +29,37 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+ # en:
+ #  hello: "Hello world"
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user_wizard:
+          attributes:
+            fname:
+              blank: "first name cannot be blank"
+
+en:
+  simple_form:
+    labels:
+      user_wizard:
+        fname: "First Name"
+        lname: "Last Name"
+    hints:
+      product:
+        price_in_cents: Enter the total price in cents.
+
+
+        en:
+  activerecord:
+    attributes:
+      user:
+        fname: "First Name"
+
+        en:
+  activerecord:
+    attributes:
+      user:
+        lname: "Last Name"
+

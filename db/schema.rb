@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_210146) do
+ActiveRecord::Schema.define(version: 2018_09_11_191107) do
 
   create_table "users", force: :cascade do |t|
     t.string "zip_code"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 2018_08_07_210146) do
     t.string "birthday"
     t.string "coverage"
     t.string "term"
+    t.string "fname"
+    t.string "lname"
+    t.string "email"
+    t.string "phone"
   end
 
 end

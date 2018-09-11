@@ -2,6 +2,7 @@ class WizardsController < ApplicationController
   before_action :load_user_wizard, except: %i(validate_step)
 
   def validate_step
+    
     current_step = params[:current_step]
 
     @user_wizard = wizard_user_for_step(current_step)
@@ -60,7 +61,7 @@ class WizardsController < ApplicationController
   end
 
   def user_wizard_params
-    params.require(:user_wizard).permit(:gender, :birthday, :zip_code, :tobacco, :coverage, :term)
+    params.require(:user_wizard).permit(:gender, :birthday, :zip_code, :tobacco, :coverage, :term, :fname, :lname, :email, :phone)
   end
 
   class InvalidStep < StandardError; end

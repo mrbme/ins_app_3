@@ -21,13 +21,14 @@ gem 'activerecord', '~> 5.0', '>= 5.0.0.1'
 gem 'roo', '~> 2.7', '>= 2.7.1'
 gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'addressable', '~> 2.5', '>= 2.5.2'
-gem 'jquery-rails'
 gem 'meta-tags'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', '~> 0.9.4'
 gem 'simple_form'
 gem 'validates_zipcode', '~> 0.1.0'
 gem 'httparty', '~> 0.13.7'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'jquery-ui-rails'
 
 
 group :development do
