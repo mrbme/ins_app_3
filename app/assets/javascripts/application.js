@@ -15,4 +15,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery-ui
+//= require jquery-ui/widgets/slider

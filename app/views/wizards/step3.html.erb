@@ -18,10 +18,10 @@
 <div class="container">
     <div class="row pt-5 h-100">
         <div class="col-md-6">
-            <div class="drk-blue border-15 p-3 text-white h-100">
+            <div class="bg-white border-15 p-3 h-100">
                 <h3>Coverage Amounts</h3>
                 <div class="py-3">
-                    <input type="range" min="250000" max="1000000" value="50000" step="50000" data-rangeslider>
+                    <input type="range" min="250000" max="2000000" value="50000" step="250000" data-rangeslider>
                 </div>
                 <div class="title clearfix pt-5 text-center">
                     $<span class="coverage _3em"></span>
@@ -29,20 +29,22 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="drk-blue border-15 p-3 text-white h-100">
+            <div class="bg-white border-15 p-3 h-100">
                 <h3>Policy Length</h3>
-                <div class="row">
-                    <div class="col text-center">
-                        <div class="form-check">
-                            <input class="form-check-input position-static" type="radio" name="term" id="blankRadio2" value="20" aria-label="test2">
+                <div class="row px-2">
+                    <div class="col text-center border-right">
+                        <div class="form-check abc-checkbox abc-checkbox-success">
+                            <input class="form-check-input" type="radio" name="term" id="singleCheckbox1" value="20" checked aria-label="Single checkbox One">
+                            <label class="form-check-label" for="singleCheckbox1"></label>
                         </div>
                         <h2>20 Years</h2>
                         <p>policies starting at</p>
                         <h2 id="rates-20"></h2>
                     </div>
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input position-static" type="radio" name="term" id="blankRadio3" value="30" aria-label="test3">
+                    <div class="col text-center border-left">
+                        <div class="form-check abc-checkbox abc-checkbox-success">
+                            <input class="form-check-input" type="radio" name="term" id="singleCheckbox2" value="30" aria-label="Single checkbox Two">
+                            <label class="form-check-label" for="singleCheckbox2"></label>
                         </div>
                         <h2>30 Years</h2>
                         <p>policies starting at</p>
@@ -52,67 +54,66 @@
             </div>
         </div>
     </div>
-</div>
-<div class="container py-5">
-    <div class="text-center pt-3">
-        <span class="font-weight-bold _2em">Your policy would protect your loved ones with a tax free, lump sum of&nbsp;</span><span class="font-weight-bold _2em text-success">$</span>
-        <span id="policy_data_coverage" class="font-weight-bold _2em text-success"></span><span class="font-weight-bold _2em">&nbsp;for a term of&nbsp;</span><span id="policy_data_term" class="font-weight-bold _2em text-success"></span><span class="font-weight-bold _2em">&nbsp;years.</span>
+    <div class="container py-5">
+        <div class="text-center pt-3">
+            <span class="font-weight-bold _2em">Your policy would protect your loved ones with a tax free, lump sum of&nbsp;</span><span class="font-weight-bold _2em text-success">$</span>
+            <span id="policy_data_coverage" class="font-weight-bold _2em text-success"></span><span class="font-weight-bold _2em">&nbsp;for a term of&nbsp;</span><span id="policy_data_term" class="font-weight-bold _2em text-success"></span><span class="font-weight-bold _2em">&nbsp;years.</span>
+        </div>
+        <hr>
+        <div class="m-auto text-center py-3 w-50">
+            <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
+            <%= hidden_field_tag :current_step, 'step3' %>
+            <%= f.hidden_field :coverage,  class: "d-none" %>
+            <%= f.hidden_field :term %>
+            <%= f.submit 'Finish', class: "btn btn-warning btn-block p-3 _1-5em" %>
+            <% end %>
+        </div>
     </div>
-    <hr>
-    <div class="m-auto text-center py-3 w-50">
-        <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
-        <%= hidden_field_tag :current_step, 'step3' %>
-        <%= f.hidden_field :coverage,  class: "d-none" %>
-        <%= f.hidden_field :term %>
-        <%= f.submit 'Finish', class: "btn btn-warning btn-block p-3 _1-5em" %>
-        <% end %>
-    </div>
-</div>
-<!--  -->
-<script>
-$.fn.digits = function() {
-return this.each(function() {
-$(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
-})
-}
-$(function() {
-$('input[type="range"]').rangeslider({
-polyfill: false,
-onInit: function() {
-$('.coverage').text($('input[type="range"]').val()).digits();
-},
-onSlide: function(position, value) {
-//console.log('onSlide');
-//console.log('position: ' + position, 'value: ' + value);
-$('.coverage').text(value).digits();
-$("#policy_data_coverage").text(value).digits();
-$("#user_wizard_coverage").val(value);
-if ($("#user_wizard_coverage")[0].value < 500000) {
-document.getElementById("rates-20").innerHTML = "$" + 18;
-document.getElementById("rates-30").innerHTML = "$" + 28;
-} else if ($("#user_wizard_coverage")[0].value < 750000) {
-document.getElementById("rates-20").innerHTML = "$" + 22;
-document.getElementById("rates-30").innerHTML = "$" + 38;
-} else if ($("#user_wizard_coverage")[0].value < 1000000) {
-document.getElementById("rates-20").innerHTML = "$" + 30;
-document.getElementById("rates-30").innerHTML = "$" + 54;
-} else if ($("#user_wizard_coverage")[0].value >= 1000000) {
-document.getElementById("rates-20").innerHTML = "$" + 36;
-document.getElementById("rates-30").innerHTML = "$" + 68;
-}
-},
-onSlideEnd: function(position, value) {
-//console.log('onSlideEnd');
-//console.log('position: ' + position, 'value: ' + value);
-}
-});
-});
-$(".form-check-input").click(function() {
-var radioValue = $("input[name='term']:checked").val();
-if (radioValue) {
-console.log(radioValue);
-$("#user_wizard_term").val(radioValue);
-$("#policy_data_term").text(radioValue);
-}
-});
-</script>
+    <!--  -->
+    <script>
+    $.fn.digits = function() {
+    return this.each(function() {
+    $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+    })
+    }
+    $(function() {
+    $('input[type="range"]').rangeslider({
+    polyfill: false,
+    onInit: function() {
+    $('.coverage').text($('input[type="range"]').val()).digits();
+    },
+    onSlide: function(position, value) {
+    //console.log('onSlide');
+    //console.log('position: ' + position, 'value: ' + value);
+    $('.coverage').text(value).digits();
+    $("#policy_data_coverage").text(value).digits();
+    $("#user_wizard_coverage").val(value);
+    if ($("#user_wizard_coverage")[0].value < 500000) {
+    document.getElementById("rates-20").innerHTML = "$" + 18;
+    document.getElementById("rates-30").innerHTML = "$" + 28;
+    } else if ($("#user_wizard_coverage")[0].value < 750000) {
+    document.getElementById("rates-20").innerHTML = "$" + 22;
+    document.getElementById("rates-30").innerHTML = "$" + 38;
+    } else if ($("#user_wizard_coverage")[0].value < 1000000) {
+    document.getElementById("rates-20").innerHTML = "$" + 30;
+    document.getElementById("rates-30").innerHTML = "$" + 54;
+    } else if ($("#user_wizard_coverage")[0].value >= 1000000) {
+    document.getElementById("rates-20").innerHTML = "$" + 36;
+    document.getElementById("rates-30").innerHTML = "$" + 68;
+    }
+    },
+    onSlideEnd: function(position, value) {
+    //console.log('onSlideEnd');
+    //console.log('position: ' + position, 'value: ' + value);
+    }
+    });
+    });
+    $(".form-check-input").click(function() {
+    var radioValue = $("input[name='term']:checked").val();
+    if (radioValue) {
+    console.log(radioValue);
+    $("#user_wizard_term").val(radioValue);
+    $("#policy_data_term").text(radioValue);
+    }
+    });
+    </script>
