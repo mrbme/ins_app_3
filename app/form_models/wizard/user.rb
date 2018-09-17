@@ -22,11 +22,9 @@ module Wizard
         :fname => "First name",
         :lname => "Last name"
       }
-
       def self.human_attribute_name(attr, options = {}) # 'options' wasn't available in Rails 3, and prior versions.
         HUMANIZED_ATTRIBUTES[attr.to_sym] || super
       end
-
 
       #validates_inclusion_of :birthday, :in=>Date.new(1900)..Time.now.years_ago(18).to_date, :message=>'You must be 18 years or older'
       validates :birthday, presence: true
@@ -43,7 +41,7 @@ module Wizard
       validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
       validates :fname, presence: true
       validates :lname, presence: true
-      validates :phone, format: { with: /\d{3}-\d{3}-\d{4}/, message: "incorrect format, use format ###-###-####" }
+      validates :phone, format: { with: /\d{3}\d{3}\d{4}/, message: "incorrect format, use format ##########" }
 
     end
 
