@@ -1,0 +1,31 @@
+<% if current_page?(root_path) %>
+	<div id="sticky-footer-btn" class="py-2 bg-dark fixed-bottom">
+    <div class="container">
+        <div class="d-flex flex-row text-white justify-content-center align-items-center w-100">
+            <div class="pr-2">Enter Your Zipcode to Get Started</div>
+            <div class="pl-2">
+                <%= form_tag(step2_wizard_path, method: "get", class: "form-inline") do %>
+                <%= text_field_tag :zipcode, "" ,class: "form-control" %>
+                <%= submit_tag "Get Started", class: "ml-2 btn btn-primary" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(window).scroll(function() {
+    footerPx = $('footer').position().top;
+    console.log(footerPx);
+    wheight = $(window).height();
+    scrollPx = (($(window).scrollTop()) + wheight);
+    console.log(scrollPx);
+    if ((footerPx - scrollPx) > 0) {
+        console.log("not yet!");
+    } else {
+        $("#sticky-footer-btn").removeClass("fixed-bottom");
+        console.log("landed!")
+    }
+});
+</script>
+<% end %>

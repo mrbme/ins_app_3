@@ -23,9 +23,18 @@
     <%= render 'layouts/errors', object: @user_wizard %>
   </div>
   <!-- end errors -->
-  <div id="zipcode" class="invisible"><%= @user_wizard.zip_code %></div>
+
+
+
+  <div id="zipcode" class="invisible">
+    <% if @user_wizard.zip_code.nil? %>
+    <%= @user_wizard.zip_code = params[:zipcode] %>
+    <% end %>
+    </div>
+
+
   <div style="font-size:3em; width: 60%;" id="empty_zip" class="text-center m-auto pb-5"></div>
-  <div class="m-auto w-50 bg-white p-5 border-15">
+  <div class="m-auto bg-white p-5 border-15">
     <%= simple_form_for @user_wizard, as: :user_wizard, url: validate_step_wizard_path do |f| %>
     <%= hidden_field_tag :current_step, 'step2' %>
     <h4 class="pt-3">First Name</h4>
@@ -41,7 +50,7 @@
     <h4 class="pt-3">Gender</h4>
     <%= f.select :gender, ['male', 'female'], class: "form-control" %>
     <h4 class="pt-3">Are you a smoker?</h4>
-    <%= f.select :tobacco, ['yes', 'rarely', 'no'], class: "form-control" %>
+    <%= f.select :tobacco, ['no', 'rarely', 'yes'], selected: 'no', class: "form-control" %>
     <br>
     <hr>
     <%= f.submit 'Next', class: "btn btn-primary mt-3" %>
